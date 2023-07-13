@@ -38,6 +38,9 @@ if (!empty($_POST)) {
            setcookie('password', $password, 0, '/');
            header('Location: /index.php');
        }
+       else {
+        $error = 'Капча невалидна';
+       }
     } else {
         $error = 'Ошибка авторизации';
         

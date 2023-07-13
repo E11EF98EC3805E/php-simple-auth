@@ -30,9 +30,12 @@ function getUserLogin(): ?string
 function getUser(string $login)
 {
     $conn = require __DIR__ . '/db_functions/conn.php';
-    $email_result =  $conn->query("SELECT id FROM user where email = '${login}'");
-    $phone_result =  $conn->query("SELECT id FROM user where phonenumber = '${login}'");
-    
+    $email_result =  $conn->query("SELECT id FROM user where email = '${login}'")->fetch();
+    $phone_result =  $conn->query("SELECT id FROM user where phonenumber = '${login}'")->fetch();
+
+    var_dump($email_result);
+    echo '</br>';
+    var_dump($phone_result);
 }
 
 /*
@@ -45,5 +48,5 @@ foreach ($user_result as $index => $value)
 }
 */
 
-
+getUser('999');
 ?>
