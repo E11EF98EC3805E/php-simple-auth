@@ -1,8 +1,6 @@
 <?php
     require __DIR__ . '/auth.php';
     $login = getUserLogin();
-    //echo 'User IP - ' . getHostByName(getHostName());
-    //echo 'User IP - ' . $_SERVER['HTTP_CLIENT_IP'];
 
 ?>
 <html>
@@ -13,7 +11,7 @@
     <?php if ($login == null): ?>
         <a href="/login.php">Авторизуйтесь</a> или <a href="/register.php">зарегистрируйтесь</a>
     <?php else: ?>
-        Добро пожаловать, <?= $login ?>
+        Добро пожаловать, <a href="/profile.php"> <?= getUser($login)["username"]; ?> </a>
     <br>
         <a href="/logout.php">Выйти</a>
     <?php endif; ?>
