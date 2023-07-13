@@ -15,8 +15,6 @@ function check_captcha($token) {
 
     $server_output = curl_exec($ch);
     $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    var_dump($server_output);
-    var_dump($httpcode);
     curl_close($ch);
     if ($httpcode !== 200) {
         echo "Allow access due to an error: code=$httpcode; message=$server_output\n";
@@ -38,7 +36,7 @@ if (!empty($_POST)) {
       if (check_captcha($token)) {
            setcookie('login', $login, 0, '/');
            setcookie('password', $password, 0, '/');
-           //header('Location: /index.php');
+           header('Location: /index.php');
        }
     } else {
         $error = 'Ошибка авторизации';
