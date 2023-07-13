@@ -30,7 +30,7 @@ function check_captcha($token) {
 
 if (!empty($_POST)) {
     require __DIR__ . '/auth.php';
-
+    $token = $_POST['smart-token'] ?? '';
     $login = $_POST['login'] ?? '';
     $password = $_POST['password'] ?? '';
 
@@ -42,7 +42,7 @@ if (!empty($_POST)) {
        }
     } else {
         $error = 'Ошибка авторизации';
-        $token = $_POST['smart-token'];
+        
     }
 }
 ?>

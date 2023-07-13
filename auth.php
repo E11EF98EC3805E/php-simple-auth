@@ -27,9 +27,12 @@ function getUserLogin(): ?string
     return null;
 }
 
-function getUserData()
+function getUser(string $login)
 {
-    $loginFromCookie = $_COOKIE['login'] ?? '';
+    $conn = require __DIR__ . '/db_functions/conn.php';
+    $email_result =  $conn->query("SELECT id FROM user where email = '${login}'");
+    $phone_result =  $conn->query("SELECT id FROM user where phonenumber = '${login}'");
+    
 }
 
 /*
